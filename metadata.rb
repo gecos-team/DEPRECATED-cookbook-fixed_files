@@ -33,5 +33,6 @@ attribute 'fixed_files/fixed_files/path_client',
   :type         => "string",
   :required     => "required",
   :validation   => "abspath",
+  :order        => "1",
   :recipes      => [ 'fixed_files::fixed_files' ]
 
