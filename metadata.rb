@@ -36,3 +36,21 @@ attribute 'fixed_files/fixed_files/path_client',
   :order        => "1",
   :recipes      => [ 'fixed_files::fixed_files' ]
 
+attribute 'fixed_files/fixed_files/user',
+  :display_name => "Own",
+  :description  => "File's owner username",
+  :type         => "string",
+  :required     => "required",
+  :wizard       => "users",
+  :order        => "2",
+  :recipes      => [ 'fixed_files::fixed_files' ]
+
+attribute 'fixed_files/fixed_files/mode',
+  :display_name => "Mode",
+  :description  => "Mode of file (in e.g 0775)",
+  :type         => "string",
+  :required     => "required",
+  :validation   => "modefile",
+  :order        => "3",
+  :recipes      => [ 'fixed_files::fixed_files' ]
+
