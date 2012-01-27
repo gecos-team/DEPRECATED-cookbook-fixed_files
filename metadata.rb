@@ -45,12 +45,30 @@ attribute 'fixed_files/fixed_files/user',
   :order        => "2",
   :recipes      => [ 'fixed_files::fixed_files' ]
 
+attribute 'fixed_files/fixed_files/group',
+  :display_name => "Owner group",
+  :description  => "File's owner group",
+  :type         => "string",
+  :required     => "required",
+  :wizard       => "groups",
+  :order        => "3",
+  :recipes      => [ 'fixed_files::fixed_files' ]
+
 attribute 'fixed_files/fixed_files/mode',
   :display_name => "Mode",
   :description  => "Mode of file (in e.g 0775)",
   :type         => "string",
   :required     => "required",
   :validation   => "modefile",
-  :order        => "3",
+  :order        => "4",
+  :recipes      => [ 'fixed_files::fixed_files' ]
+
+attribute 'fixed_files/fixed_files/override',
+  :display_name => "Override",
+  :description  => "Create the file locally only if the file doesn't yet exist",
+  :type         => "string",
+  :required     => "required",
+  :choice       => [ "true", "false" ],
+  :order        => "5",
   :recipes      => [ 'fixed_files::fixed_files' ]
 

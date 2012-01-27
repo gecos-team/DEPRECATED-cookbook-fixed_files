@@ -25,12 +25,23 @@ fixed_files = node["fixed_files"]["fixed_files"].map{|x| x[1]}.flatten
 fixed_files.each do |fixedfile|
   path_client = fixedfile["path_client"]
   file_url = fixedfile["file_url"]
-  FileUtils.mkdir_p(path_client)
-  remote_file path_client do
-    source file_url
-    owner fixedfile["user"]
-    mode fixedfile["mode"]
-  end  
+  override = fixedfile["override"]
+  if override == 'true'
+    remote_file path_client do
+      source file_url
+      owner fixedfile["user"]
+      mode fixedfile["mode"]
+      group fixedfile["group"]
+    end  
+  else
+    remote_file path_client do
+      source file_url
+      owner fixedfile["user"]
+      mode fixedfile["mode"]
+      group fixedfile["group"]
+      action :create_if_missing
+    end  
+  end
 end
 
 
