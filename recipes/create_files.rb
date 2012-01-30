@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: fixed_files
-# Recipe:: fixed_files
+# Recipe:: create_files
 #
 # Copyright 2011 Junta de Andalucía
 #
@@ -20,9 +20,9 @@
 # limitations under the License.
 #
 
-fixed_files = node["fixed_files"]["fixed_files"].map{|x| x[1]}.flatten
+files = node["fixed_files"]["create_files"].map{|x| x[1]}.flatten
 
-fixed_files.each do |fixedfile|
+files.each do |fixedfile|
   path_client = fixedfile["path_client"]
   file_url = fixedfile["file_url"]
   override = fixedfile["override"]
