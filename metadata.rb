@@ -5,7 +5,8 @@ license           "Apache 2.0"
 description       "Puts fiels in to clients in concrete path"
 version           "0.1.1"
 
-recipe            "fixed_files::create_files", "Puts fiels in to clients in concrete path"
+recipe            "fixed_files::create_files", "Copy remote files to the Chef node."
+recipe            "fixed_files::remove_files", "Remove local files of the Chef node."
 
 %w{ ubuntu debian }.each do |os|
   supports os
