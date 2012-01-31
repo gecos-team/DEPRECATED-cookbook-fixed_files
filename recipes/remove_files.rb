@@ -28,18 +28,24 @@ def remove_files()
 
     file_path = file['file_path']
 
-    if File.exists?(file_path)
-      if File.file?(file)
-        file file_path do
-          backup false
-          action :delete
-        end
-      elsif File.directory?(file)
-        directory file_path do
-          recursive true
-          action :delete
+    begin
+
+      if File.exists?(file_path)
+        if File.file?(file_path)
+          file file_path do
+            backup false
+            action :delete
+          end
+        elsif File.directory?(file_path)
+          directory file_path do
+            recursive true
+            action :delete
+          end
         end
       end
+
+    rescue Exception => e
+      puts "Error processing fixed_files:remove_files:#{file_path}: " + e
     end
   end
 end
@@ -47,5 +53,5 @@ end
 begin
   remove_files
 rescue Exception => e
-  puts e.backtrace
+  puts e
 end
